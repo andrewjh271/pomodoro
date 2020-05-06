@@ -1,20 +1,57 @@
 html, body {
   margin:0;padding:0;height:100%;
+  --linear-background: linear-gradient(-45deg, white 60%, red);
+  width: 100%;
 }
-#diamond-container {
+
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   border: 1px gray solid;
   height: 85vh;
+  top: 0;
+  left: calc(50% - 42.5vh/2);
   width: 42.5vh; /*hypotenuse of triangle created from two sides of one diamond */
 }
+.diamond-fill {
+  background: var(--linear-background);
+}
+#display-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5vh;
+}
+#right-container {
+  display: flex;
+  flex-direction: column;
+}
+.right-items {
+  background: orange;
+  display: flex;
+
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 #top-diamond {
   border: 1px black solid;
   height: 30vh;
   width: 30vh;
-  transform: rotate(45deg);
+  transform: rotate(225deg);
   margin: auto;
   position: relative;
-  top: 6.2vh /* Half the difference between hypotenuse and a side */
+  /*top: 6.2vh;  Half the difference between hypotenuse and a side */
+  background: var(--linear-background);
 }
+
 #bottom-diamond {
   border: 1px black solid;
   height: 30vh;
@@ -22,12 +59,19 @@ html, body {
   transform: rotate(45deg);
   margin: auto;
   position: relative;
-  top: 18.6vh /* Offset from top should be hypotenuse. 30vh from top-diamond already accounted for. Add 12.4vh to account for top-diamond's
+  /*top: 18.6vh  Offset from top should be hypotenuse. 30vh from top-diamond already accounted for. Add 12.4vh to account for top-diamond's
   rotation (top and bottom), and 6.2vh to account for bottom-diamond's rotation (top only). */
 }
 #timer {
-  position: fixed;
+  font-size: 2.5vh;
 }
-#controls {
-  float: right;
+#controls-container {
+  font-size: 2.5vh;
+}
+
+main {
+  display: flex;
+}
+main > * {
+  flex: 1;
 }
