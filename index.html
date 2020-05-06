@@ -4,12 +4,17 @@
   <meta charset="utf-8">
   <title>Pomodoro</title>
   <link rel='stylesheet' href='style.css'>
+  <script src="https://kit.fontawesome.com/07b0558508.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <main>
     <div class='container' id='display-container'>
       <div id='left-container'>
+        <!-- 
+        <i class="fas fa-pause"></i> replace with fa-play class on click
+        <i class="fas fa-redo"></i>
+        -->
         <div id='timer'>Timer</div>
       </div>
       <div id='right-container'>
@@ -30,12 +35,18 @@
           <span class='circle'></span>
           <span class='circle'></span>
           <span class='circle'></span>
+          <!-- or...
+          <i class="far fa-circle session session1"></i> classList.remove('far') classList.add('fas')
+          <i class="far fa-circle session session2"></i> 
+          <i class="far fa-circle session session3"></i> 
+          <i class="far fa-circle session session4"></i> 
+          -->
         </div>
       </div>
     </div>
     <div class='container' id='diamond-container'>
-      <div class="diamond-fill" id='top-diamond'></div>
-      <div class="diamond-fill" id='bottom-diamond'></div>
+      <div class="diamond" id='top-diamond'></div>
+      <div class="diamond" id='bottom-diamond'></div>
     </div>
   </main>
 
