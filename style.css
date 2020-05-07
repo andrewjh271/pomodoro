@@ -9,6 +9,7 @@ main > * {
   flex: 1;
 }
 .container {
+  margin-top: 5vh;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -17,19 +18,71 @@ main > * {
   left: calc(50% - 42.5vh/2);
   width: 42.5vh; /* hypotenuse of triangle created from two sides of one diamond */
 }
+#diamond-container {
+  justify-content: center;
+  overflow: hidden;
+}
 .diamond {
-  background: var(--linear-background);
+  /* background: var(--linear-background);
   height: 30vh;
   width: 30vh;
-  border: 1px black solid;
-  margin: auto;
+  border: 1px black solid; */
+  margin: 0 auto 0 auto;
   position: relative;
 }
 #top-diamond {
-  transform: rotate(225deg);
+  /* transform: rotate(225deg); */
+
+  /* width: 0;
+  height: 0;
+  border-bottom: 0;
+  border-left: 15vh solid transparent;
+  border-right: 15vh solid transparent;
+  border-top: 30vh solid red; */
+
+  height: 36.3vh; /* width / 1.157 for skewX(30deg) */
+  width: 42vh;
+  position: relative;
+  /* background-color: gold; */
+  /* overflow: hidden; */
+}
+#top-diamond:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(225deg,#13d4e2, #762ada 0%, #13d4e2 60%);
+  /*the second color will go from 0 to 100%; the third color will go from 60% to 100%, reaching 100% about halfway through */
+  transform-origin: left top;
+  transform: rotate(-60deg) skewX(-30deg)  
 }
 #bottom-diamond {
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
+
+  /* width: 0;
+  height: 0;
+  border-top: 0;
+  border-left: 15vh solid transparent;
+  border-right: 15vh solid transparent;
+  border-bottom: 30vh solid red; */
+
+  height: 36.3vh;
+  width: 42vh;
+  position: relative;
+  /* overflow: hidden; */
+}
+#bottom-diamond:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
+  transform-origin: left bottom;
+  transform: rotate(60deg) skewX(30deg);
 }
 #display-container {
   display: flex;
@@ -53,6 +106,15 @@ main > * {
 }
 .active-title {
   color: blue;
+}
+.arrow {
+  font-size: 1vh;
+}
+.down {
+  color: lightseagreen;
+}
+.up {
+  color: lightskyblue;
 }
 .session0 {
   color: blue;
@@ -96,6 +158,7 @@ button:active {
 #controls > * {
   margin: 1.5vh;
   margin-top: 1vh;
+  color: #a5a5a5;
 }
 #controls > *:hover {
   color: green;
