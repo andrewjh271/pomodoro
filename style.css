@@ -139,12 +139,14 @@ button {
   border: none;
   font-size: inherit;
   font-family: inherit;
+  cursor: pointer;
 }
 button:focus {
   outline: none;
 }
 button:hover {
   color: rgb(39, 136, 104);
+  
 }
 button:active {
   color: blue;

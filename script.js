@@ -41,19 +41,15 @@ function buttonClick(e) {
   switch(target) {
     case('session-up'):
       sessionTime.textContent = +sessionTime.textContent + 1;
-      // seconds = 60 * +sessionTime.textContent;
       break;
     case('session-down'):
       sessionTime.textContent -= 1;
-      // seconds = 60 * +sessionTime.textContent;
       break;
     case('break-up'):
       breakTime.textContent = +breakTime.textContent + 1;
-      // seconds = 60 * +breakTime.textContent;
       break;
     case('break-down'):
       breakTime.textContent -= 1;
-      // seconds = 60 * +breakTime.textContent;
       break;
     case('pause-play'):
       if(!extraTime) {
