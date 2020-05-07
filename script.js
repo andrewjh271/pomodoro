@@ -25,9 +25,22 @@ timer.textContent = prettifyDate();
 
 let currentlyWorking = true;
 let extraTime = false;
+let newSession = true;
+
+let startTime;
+
 const extra = document.querySelector('.extra');
 
 let currentSession = 0;
+//background-image: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
+
+// let topDiamond = document.querySelector('#top-diamond', ':before');
+// console.log(topDiamond);
+const rootElement = document.documentElement;
+// topDiamond.style = 'background-image: linear-gradient(-45deg, #762ada, #13d4e2 70%, #762ada 80%)';
+console.log(getComputedStyle(rootElement).getPropertyValue('--linear-background-top'));
+rootElement.style.setProperty('--linear-background-top', 'linear-gradient(-45deg, #762ada, #13d4e2 100%, #762ada 80%)');
+
 session = [];
 session[0] = document.querySelector('.session0');
 session[1] = document.querySelector('.session1');
@@ -40,20 +53,28 @@ function buttonClick(e) {
   if(!target) return;
   switch(target) {
     case('session-up'):
-      sessionTime.textContent = +sessionTime.textContent + 1;
+      if(+sessionTime.textContent < 59)
+        sessionTime.textContent = +sessionTime.textContent + 1;
       break;
     case('session-down'):
-      sessionTime.textContent -= 1;
+      if(+sessionTime.textContent > 1)
+        sessionTime.textContent -= 1;
       break;
     case('break-up'):
-      breakTime.textContent = +breakTime.textContent + 1;
+      if(+breakTime.textContent < 59)
+        breakTime.textContent = +breakTime.textContent + 1;
       break;
     case('break-down'):
-      breakTime.textContent -= 1;
+      if(+breakTime.textContent > 1)
+        breakTime.textContent -= 1;
       break;
     case('pause-play'):
       if(!extraTime) {
         if(!timerOn) {
+          if(newSession) {
+            startTime = +sessionTime.textContent;
+            newSession = false;
+          }
           timerOn = setInterval(decreaseSecond, 1000);
           pausePlay.classList.remove('fa-play')
           pausePlay.classList.add('fa-pause')
@@ -84,6 +105,7 @@ function buttonClick(e) {
           breakTitle.classList.remove('active-title');
         }
         pausePlay.classList.add('fa-pause')
+        pausePlay.style = ('color: gray');
         clearInterval(timerOn);
         date = new Date(0);
         date.setSeconds(seconds);
@@ -113,6 +135,7 @@ function buttonClick(e) {
       pausePlay.classList.remove('fa-pencil-alt');
       pausePlay.classList.remove('fa-mug-hot');
       pausePlay.classList.add('fa-play')
+      pausePlay.style = ('color: gray');
       break;
   }
   // date = new Date(0);
@@ -128,6 +151,7 @@ function decreaseSecond() {
       updateSessionCount();
       pausePlay.classList.remove('fa-pause');
       pausePlay.classList.add('fa-mug-hot');
+      pausePlay.style = ('color: chocolate');
     } else {
       pausePlay.classList.remove('fa-pause');
       pausePlay.classList.add('fa-pencil-alt');
@@ -138,6 +162,7 @@ function decreaseSecond() {
     extra.classList.remove('extra-hidden');
     extra.textContent = `Extra Time: ${prettifyDate()}`;
   }
+  updateGradient();
   timer.textContent = prettifyDate();
 }
 function increaseSecond() {
@@ -161,5 +186,23 @@ function clearSessionCount() {
     session.classList.add('far');
   })
 }
+function updateGradient() {
+  const remainingTime = date.getMinutes() * 60 + date.getSeconds();
+  console.log(remainingTime);
+  let progress = 1 - (remainingTime / (startTime * 60));
+  console.log(progress);
 
+  let colorTwoStart = progress * 2 * 100;
 
+  if (colorTwoStart >= 100) {
+    colorTwoStart = 100;
+  }
+
+  let colorThreeStart = 60 + progress * 40;
+
+  console.log(colorTwoStart)
+  console.log(colorThreeStart)
+
+  rootElement.style.setProperty('--linear-background-top', `linear-gradient(225deg,#13d4e2, #8672a1 ${colorTwoStart}%, #13d4e2 ${colorThreeStart}%)`);
+  rootElement.style.setProperty('--linear-background-bottom', `linear-gradient(-45deg, #762ada, #13d4e2 ${colorTwoStart}%, #762ada ${colorThreeStart}%`);
+}

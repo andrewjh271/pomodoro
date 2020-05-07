@@ -1,6 +1,9 @@
+:root {
+  --linear-background-top: linear-gradient(225deg,#13d4e2, #8672a1 0%, #13d4e2 60%);
+  --linear-background-bottom: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
+}
 html, body {
   margin:0;padding:0;height:100%;width: 100%;
-  --linear-background: linear-gradient(-45deg, white 60%, red);
 }
 main {
   display: flex;
@@ -53,10 +56,11 @@ main > * {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(225deg,#13d4e2, #762ada 0%, #13d4e2 60%);
+  /* background-image: linear-gradient(225deg,#13d4e2, #8672a1 0%, #13d4e2 60%); */
+  background-image: var(--linear-background-top);
   /*the second color will go from 0 to 100%; the third color will go from 60% to 100%, reaching 100% about halfway through */
   transform-origin: left top;
-  transform: rotate(-60deg) skewX(-30deg)  
+  transform: rotate(-60deg) skewX(-30deg);
 }
 #bottom-diamond {
   /* transform: rotate(45deg); */
@@ -71,6 +75,7 @@ main > * {
   height: 36.3vh;
   width: 42vh;
   position: relative;
+  /* background-color: orange; */
   /* overflow: hidden; */
 }
 #bottom-diamond:before {
@@ -80,7 +85,8 @@ main > * {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
+  /* background-image: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%); */
+  background-image: var(--linear-background-bottom);
   transform-origin: left bottom;
   transform: rotate(60deg) skewX(30deg);
 }
@@ -145,8 +151,7 @@ button:focus {
   outline: none;
 }
 button:hover {
-  color: rgb(39, 136, 104);
-  
+  color: rgb(39, 136, 104) !important;
 }
 button:active {
   color: blue;
@@ -170,4 +175,10 @@ button:active {
 }
 .extra-hidden {
   color: transparent;
+}
+#pause-play {
+  color: gray;
+}
+#pause-play:hover {
+  color: blue !important;
 }
