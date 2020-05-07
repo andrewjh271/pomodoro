@@ -11,36 +11,31 @@
   <main>
     <div class='container' id='display-container'>
       <div id='left-container'>
-        <!-- 
-        <i class="fas fa-pause"></i> replace with fa-play class on click
-        <i class="fas fa-redo"></i>
-        -->
+        <div class='extra extra-hidden'>Extra Time</div>
         <div id='timer'>Timer</div>
+        <div id='controls'>
+          <button id="pause-play"><i id="pause-play" class="fas fa-play"></i></button>
+          <button id="reset"><i id="reset" class="fas fa-redo"></i></button>
+        </div>
       </div>
       <div id='right-container'>
         <div class="right-items" id='session'>
-          <h3 class="title">Session</h3> 
-          <button class="arrow down">▼</button>
-          <p>25</p>
-          <button class="arrow up">▲</button>
+          <h3 class="title" id='session-title'>Session:</h3> 
+          <button class="arrow down" id='session-down'>▼</button>
+          <h4 id=set-session></h4>
+          <button class="arrow up" id='session-up'>▲</button>
         </div> 
         <div class="right-items" id='break'>
-          <h3 class="title">Break</h3> 
-          <button class="arrow down">▼</button>
-          <p>5</p>
-          <button class="arrow up">▲</button>
+          <h3 class="title" id='break-title'>Break:&ensp;</h3> 
+          <button class="arrow down" id='break-down'>▼</button>
+          <h4 id=set-break></h4>
+          <button class="arrow up" id='break-up'>&ensp;▲</button>
         </div> 
         <div class="right-items" id='circles'>
-          <span class='circle'></span>
-          <span class='circle'></span>
-          <span class='circle'></span>
-          <span class='circle'></span>
-          <!-- or...
-          <i class="far fa-circle session session1"></i> classList.remove('far') classList.add('fas')
-          <i class="far fa-circle session session2"></i> 
-          <i class="far fa-circle session session3"></i> 
-          <i class="far fa-circle session session4"></i> 
-          -->
+          <i class="far fa-circle session0"></i> 
+          <i class="far fa-circle session1"></i> 
+          <i class="far fa-circle session2"></i> 
+          <i class="far fa-circle session3"></i> 
         </div>
       </div>
     </div>

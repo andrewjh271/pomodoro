@@ -12,7 +12,7 @@ main > * {
   position: absolute;
   display: flex;
   flex-direction: column;
-  border: 1px gray solid;
+  border: 1px rgb(204, 204, 204) dotted;
   height: 85vh;
   left: calc(50% - 42.5vh/2);
   width: 42.5vh; /* hypotenuse of triangle created from two sides of one diamond */
@@ -37,14 +37,40 @@ main > * {
   justify-content: space-between;
   align-items: center;
   font-size: 1.5vh;
+  z-index: 2;
 }
 #right-container {
   display: flex;
   flex-direction: column;
+  width: 15vh;
 }
 .right-items {
-  background: orange;
+  /* background: orange; */
   display: flex;
+  height: 4vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.active-title {
+  color: blue;
+}
+.session0 {
+  color: blue;
+}
+.session1 {
+  color: red;
+}
+.session2 {
+  color: purple;
+}
+.session3 {
+  color: green;
+}
+#left-container {
+  width: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 button {
   background: transparent;
@@ -52,8 +78,31 @@ button {
   font-size: inherit;
   font-family: inherit;
 }
-
-
+button:focus {
+  outline: none;
+}
+button:hover {
+  color: rgb(39, 136, 104);
+}
+button:active {
+  color: blue;
+}
 #timer {
-  font-size: 2.5vh;
+  font-size: 4.5vh;
+}
+#controls {
+  font-size: 2.4vh;
+}
+#controls > * {
+  margin: 1.5vh;
+  margin-top: 1vh;
+}
+#controls > *:hover {
+  color: green;
+}
+.extra {
+  color: red;
+}
+.extra-hidden {
+  color: transparent;
 }
