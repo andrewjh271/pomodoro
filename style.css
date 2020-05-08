@@ -1,6 +1,12 @@
 :root {
-  --linear-background-top: linear-gradient(225deg,#13d4e2, #8672a1 0%, #13d4e2 60%);
-  --linear-background-bottom: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
+  /* --linear-background-top: linear-gradient(225deg,#13d4e2, #8672a1 0%, #13d4e2 60%); */
+  --linear-background-top: linear-gradient(222deg, #02ddec -70%, #de1af8 0%, #02ddec 120%);
+  /* top to bottom */
+  --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #de1af8 0%, #02ddec 170%);
+  
+  /*top to bottom; pink goes from 0 to 150%
+  /* --linear-background-bottom: linear-gradient(142deg,blue -30%, red 10%, blue 120%);  */
+  /*top to bottom red goes from 10% to 200%*/
 }
 html, body {
   margin:0;padding:0;height:100%;width: 100%;
@@ -110,11 +116,32 @@ main > * {
   align-items: center;
   justify-content: space-evenly;
 }
-.active-title {
-  color: blue;
+
+.active-session {
+
+  text-shadow: 1px 1px 1px rgba(163, 223, 241, 0.31);
+  animation: color-change-session 5s infinite;
+}
+@keyframes color-change-session {
+  0% { color: rgb(35, 144, 233); }
+  50% { color: rgb(5, 5, 133); }
+  100% { color: rgb(35, 144, 233); }
+}
+.active-break {
+
+  text-shadow: 1px 1px 1px rgba(163, 223, 241, 0.31);
+  animation: color-change-break 5s infinite;
+}
+@keyframes color-change-break {
+  0% { color: rgb(225, 82, 238); }
+  50% { color: rgb(223, 8, 37); }
+  100% { color: rgb(171, 105, 224); }
 }
 .arrow {
   font-size: 1vh;
+}
+.arrow:hover {
+  color: orange !important;
 }
 .down {
   color: lightseagreen;
@@ -123,16 +150,16 @@ main > * {
   color: lightskyblue;
 }
 .session0 {
-  color: blue;
+  color: rgb(226, 60, 231);
 }
 .session1 {
-  color: red;
+  color: rgb(98, 0, 255);
 }
 .session2 {
-  color: purple;
+  color: rgb(24, 0, 161);
 }
 .session3 {
-  color: green;
+  color: rgb(0, 99, 145);
 }
 #left-container {
   width: 15vh;
@@ -154,7 +181,7 @@ button:hover {
   color: rgb(39, 136, 104) !important;
 }
 button:active {
-  color: blue;
+  color: yellow !important;
 }
 #timer {
   font-size: 4.5vh;
@@ -176,9 +203,12 @@ button:active {
 .extra-hidden {
   color: transparent;
 }
-#pause-play {
-  color: gray;
-}
+/* #pause-play {
+  color: rgb(74, 9, 253);
+} */
 #pause-play:hover {
-  color: blue !important;
+  color: rgb(0, 255, 255) !important;
+}
+#pause-play:active {
+  color: yellow !important;
 }
