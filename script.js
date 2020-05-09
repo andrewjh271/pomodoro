@@ -180,7 +180,7 @@ function decreaseSecond() {
     } else {
       pausePlay.classList.remove('fa-pause');
       pausePlay.classList.add('fa-pencil-alt');
-      pausePlay.style = ('color: #ef950d')
+      pausePlay.style = ('color: rgb(208, 123, 15)')
     }
     // clearInterval(gradientTimer);
     clearInterval(timerOn);
