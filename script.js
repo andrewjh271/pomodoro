@@ -195,17 +195,17 @@ function updateGradient() {
   let progress = 1 - (remainingTime / (startTime * 60 * 1000));
   // console.log(progress);
 
-  let colorVariable = progress * 1.1 * 100;
+  let colorVariable = progress * 100;
   console.log(colorVariable);
 
   rootElement.style.setProperty('--linear-background-top',
-    `linear-gradient(222deg, #02ddec -70%, #de1af8 ${colorVariable}%, #02ddec 120%)`);
+    `linear-gradient(222deg, #02ddec -70%, #ee05db ${colorVariable}%, #02ddec 120%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
-  `linear-gradient(142deg, #02ddec -30%, #de1af8 ${colorVariable}%, #02ddec 170%)`);  
+  `linear-gradient(142deg, #02ddec -30%, #ee05db ${colorVariable * 1.2}%, #02ddec 120%)`);  
 }
 function resetGradient() {
   rootElement.style.setProperty('--linear-background-top',
-    `linear-gradient(222deg, #02ddec -70%, #de1af8 0%, #02ddec 120%)`);
+    `linear-gradient(222deg, #02ddec -70%, #ee05db 0%, #02ddec 120%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
-    `linear-gradient(142deg, #02ddec -30%, #de1af8 0%, #02ddec 170%)`);
+    `linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%)`);
 }

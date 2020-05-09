@@ -1,14 +1,14 @@
 :root {
-  --linear-background-top: linear-gradient(222deg, #02ddec -70%, #de1af8 0%, #02ddec 120%);
-  /* top to bottom */
-  --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #de1af8 0%, #02ddec 170%);
-  /* top to bottom */
+  --linear-background-top: linear-gradient(222deg, #02ddec -70%, #ee05db 0%, #02ddec 120%);
+  /* top to bottom, #ee05db from 0 to 100 percent */
+  --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%);
+  /* top to bottom, #ee05db from 0 to 130 percent */
 }
 html, body {
   margin:0;padding:0;height:100%;width: 100%;
   font-family: 'Nanum Gothic', sans-serif;
-  background: linear-gradient(127deg, rgba(115, 32, 192, 0.253) 0%, rgba(206, 147, 214, 0.267) 15%,
-   rgba(121, 203, 233, 0.541) 75%, rgba(115, 171, 240, 0.63) 100%);
+  background: linear-gradient(127deg, rgba(125, 57, 189, 0.199) 0%, rgba(255, 230, 147, 0.205) 25%,
+   rgba(125, 200, 228, 0.281) 75%, rgba(119, 177, 247, 0.568) 100%);
 }
 .container {
   margin-top: 5vh;
