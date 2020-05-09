@@ -12,7 +12,6 @@ buttons.forEach((button) => button.addEventListener('click', buttonClick));
 pausePlay = document.querySelector('i');
 
 let seconds = 60 * sessionTime.textContent;
-// let seconds = 5;
 let date = new Date(0);
 date.setSeconds(seconds);
 let timeString = prettifyDate();
@@ -30,19 +29,13 @@ let newSession = true;
 
 let startTime;
 
-// let gradientTimer;
-
 const extra = document.querySelector('.extra');
 
 let currentSession = 0;
-//background-image: linear-gradient(-45deg, #762ada, #13d4e2 0%, #762ada 60%);
 
-// let topDiamond = document.querySelector('#top-diamond', ':before');
-// console.log(topDiamond);
 const rootElement = document.documentElement;
-// topDiamond.style = 'background-image: linear-gradient(-45deg, #762ada, #13d4e2 70%, #762ada 80%)';
+
 // console.log(getComputedStyle(rootElement).getPropertyValue('--linear-background-top'));
-// rootElement.style.setProperty('--linear-background-top', 'linear-gradient(-45deg, #762ada, #13d4e2 100%, #762ada 80%)');
 
 session = [];
 session[0] = document.querySelector('.session0');
@@ -82,9 +75,7 @@ function buttonClick(e) {
             startTime = +sessionTime.textContent;
             newSession = false;
           }
-          // setTimeout(function() {timerOn = setInterval(decreaseSecond, 100)}, 900);
           timerOn = setInterval(decreaseSecond, 100);
-          // gradientTimer = setInterval(updateGradient, 100)
           pausePlay.classList.remove('fa-play')
           pausePlay.classList.add('fa-pause')
           if(currentlyWorking) sessionTitle.classList.add('active-session');
@@ -93,7 +84,6 @@ function buttonClick(e) {
         } else {
           clearInterval(timerOn);
           timerOn = null;
-          // clearInterval(gradientTimer);
           pausePlay.classList.remove('fa-pause')
           pausePlay.classList.add('fa-play')
           if(currentlyWorking) sessionTitle.classList.remove('active-session');
@@ -115,19 +105,18 @@ function buttonClick(e) {
           pausePlay.classList.remove('fa-mug-hot');
           sessionTitle.classList.remove('active-session');
           breakTitle.classList.add('active-break');
-          setTimeout(function() {timerOn = setInterval(decreaseSecond, 100)}, 900);
+          timerOn = setInterval(decreaseSecond, 100);
         } else {
           seconds = 60 * +sessionTime.textContent;
           date.setSeconds(seconds);
           timer.textContent = prettifyDate();
           resetGradient();
-          // gradientTimer = setInterval(updateGradient, 100)
           startTime = +sessionTime.textContent;
           currentlyWorking = true;
           pausePlay.classList.remove('fa-pencil-alt');
           sessionTitle.classList.add('active-session');
           breakTitle.classList.remove('active-break');
-          setTimeout(function() {timerOn = setInterval(decreaseSecond, 100)}, 900);
+          timerOn = setInterval(decreaseSecond, 100);
         }
       }
       break;
@@ -136,7 +125,6 @@ function buttonClick(e) {
       newSession = true;
       clearInterval(timerOn);
       timerOn = null;
-      // clearInterval(gradientTimer);
       seconds = 60 * +sessionTime.textContent;
       date = new Date(0);
       date.setSeconds(seconds);
@@ -158,17 +146,7 @@ function buttonClick(e) {
       pausePlay.style = ('color: #1f91a4');
       break;
   }
-  // date = new Date(0);
-  // date.setSeconds(seconds);
-  // timer.textContent = prettifyDate();
 }
-// function incrementDate() {
-//   if(timerCount == 10) {
-//     timerCount = 0;
-//     decreaseSecond();
-//   } else timerCount++;
-//   updateGradient();
-// }
 function decreaseSecond() {
   date.setMilliseconds(date.getMilliseconds() - 100);
   if (date.getMinutes() === 0 && date.getSeconds() === 0) {
@@ -182,7 +160,6 @@ function decreaseSecond() {
       pausePlay.classList.add('fa-pencil-alt');
       pausePlay.style = ('color: rgb(208, 123, 15)')
     }
-    // clearInterval(gradientTimer);
     clearInterval(timerOn);
     timerOn = setInterval(increaseSecond, 1000);
     extraTime = true;
@@ -215,38 +192,16 @@ function clearSessionCount() {
 }
 function updateGradient() {
   const remainingTime = date.getMinutes() * 60000 + date.getSeconds() * 1000 + date.getMilliseconds();
-  // console.log(remainingTime);
   let progress = 1 - (remainingTime / (startTime * 60 * 1000));
-  console.log(progress);
-
-  let colorTwoStart = progress * 2 * 100;
-
-  if (colorTwoStart >= 100) {
-    colorTwoStart = 100;
-  }
-
-  let colorThreeStart = 60 + progress * 40;
+  // console.log(progress);
 
   let colorVariable = progress * 1.1 * 100;
   console.log(colorVariable);
 
-  // console.log(colorTwoStart)
-  // console.log(colorThreeStart)
-
-  // rootElement.style.setProperty('--linear-background-top',
-  //   `linear-gradient(225deg,#13d4e2, #8672a1 ${colorTwoStart}%, #13d4e2 ${colorThreeStart}%)`);
-  // rootElement.style.setProperty('--linear-background-bottom', 
-  //   `linear-gradient(-45deg, #762ada, #13d4e2 ${colorTwoStart}%, #762ada ${colorThreeStart}%`);
-
-  rootElement.style.setProperty('--linear-background-top',
-    `linear-gradient(225deg,red, blue ${colorTwoStart}%, red ${colorThreeStart}%)`);
-
-
   rootElement.style.setProperty('--linear-background-top',
     `linear-gradient(222deg, #02ddec -70%, #de1af8 ${colorVariable}%, #02ddec 120%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
-  `linear-gradient(142deg, #02ddec -30%, #de1af8 ${colorVariable}%, #02ddec 170%)`);
-  
+  `linear-gradient(142deg, #02ddec -30%, #de1af8 ${colorVariable}%, #02ddec 170%)`);  
 }
 function resetGradient() {
   rootElement.style.setProperty('--linear-background-top',
