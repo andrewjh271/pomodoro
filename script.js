@@ -11,8 +11,8 @@ buttons = document.querySelectorAll('button')
 buttons.forEach((button) => button.addEventListener('click', buttonClick));
 pausePlay = document.querySelector('i');
 
-// let seconds = 60 * sessionTime.textContent;
-let seconds = 5;
+let seconds = 60 * sessionTime.textContent;
+// let seconds = 5;
 let date = new Date(0);
 date.setSeconds(seconds);
 let timeString = prettifyDate();
@@ -75,6 +75,9 @@ function buttonClick(e) {
       if(!extraTime) {
         if(!timerOn) {
           if(newSession) {
+            date = new Date(0);
+            seconds = 60 * sessionTime.textContent;
+            date.setSeconds(seconds);
             resetGradient();
             startTime = +sessionTime.textContent;
             newSession = false;
@@ -99,7 +102,7 @@ function buttonClick(e) {
         }
       } else {
         pausePlay.classList.add('fa-pause')
-        pausePlay.style = ('color: gray');
+        pausePlay.style = ('color: #1f91a4');
         clearInterval(timerOn);
         date = new Date(0);
         extraTime = false;
@@ -152,7 +155,7 @@ function buttonClick(e) {
       pausePlay.classList.remove('fa-pencil-alt');
       pausePlay.classList.remove('fa-mug-hot');
       pausePlay.classList.add('fa-play')
-      pausePlay.style = ('color: gray');
+      pausePlay.style = ('color: #1f91a4');
       break;
   }
   // date = new Date(0);
@@ -173,10 +176,11 @@ function decreaseSecond() {
       updateSessionCount();
       pausePlay.classList.remove('fa-pause');
       pausePlay.classList.add('fa-mug-hot');
-      pausePlay.style = ('color: chocolate');
+      pausePlay.style = ('color: #7b3d07');
     } else {
       pausePlay.classList.remove('fa-pause');
       pausePlay.classList.add('fa-pencil-alt');
+      pausePlay.style = ('color: #ef950d')
     }
     // clearInterval(gradientTimer);
     clearInterval(timerOn);

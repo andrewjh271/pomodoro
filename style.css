@@ -10,6 +10,10 @@
 }
 html, body {
   margin:0;padding:0;height:100%;width: 100%;
+  /* background: radial-gradient(circle, rgba(255, 26, 237, 0.12) 0%, rgba(148,187,233,1) 100%); */
+  /* background: linear-gradient(90deg, blue, red); */
+  font-family: 'Nanum Gothic', sans-serif;
+  background: linear-gradient(127deg, rgba(255,222,237,1) 0%, rgba(175,218,234,0.8169642857142857) 75%, rgba(115,172,240,1) 100%);
 }
 main {
   display: flex;
@@ -22,7 +26,7 @@ main > * {
   position: absolute;
   display: flex;
   flex-direction: column;
-  border: 1px rgb(204, 204, 204) dotted;
+  /* border: 1px rgb(204, 204, 204) dotted; */
   height: 85vh;
   left: calc(50% - 42.5vh/2);
   width: 42.5vh; /* hypotenuse of triangle created from two sides of one diamond */
@@ -114,9 +118,12 @@ main > * {
   display: flex;
   height: 4vh;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
-
+h3 {
+  font-size: 2.3vh;
+  font-weight: normal;
+}
 .active-session {
 
   text-shadow: 1px 1px 1px rgba(163, 223, 241, 0.31);
@@ -143,11 +150,14 @@ main > * {
 .arrow:hover {
   color: orange !important;
 }
+.arrow:active {
+  color: yellow !important;
+}
 .down {
   color: lightseagreen;
 }
 .up {
-  color: lightskyblue;
+  color: rgb(150, 27, 161);
 }
 .session0 {
   color: rgb(226, 60, 231);
@@ -178,7 +188,7 @@ button:focus {
   outline: none;
 }
 button:hover {
-  color: rgb(39, 136, 104) !important;
+  color: rgb(219, 15, 15) !important;
 }
 button:active {
   color: yellow !important;
@@ -192,11 +202,9 @@ button:active {
 #controls > * {
   margin: 1.5vh;
   margin-top: 1vh;
-  color: #a5a5a5;
+  color: #1f91a4;
 }
-#controls > *:hover {
-  color: green;
-}
+
 .extra {
   color: red;
 }
@@ -211,4 +219,23 @@ button:active {
 }
 #pause-play:active {
   color: yellow !important;
+}
+#footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-right: 1vh;
+  padding-bottom: .5vh;
+  color: white;
+  font-size: 1.5vh;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: lightgray;
+}
+a:visited {
+  text-decoration: none;
 }
