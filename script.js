@@ -4,7 +4,7 @@ const breakTime = document.querySelector('#set-break');
 const sessionTitle = document.querySelector('#session-title');
 const breakTitle = document.querySelector('#break-title');
 
-sessionTime.textContent = 1;
+sessionTime.textContent = 25;
 breakTime.textContent = 5;
 
 buttons = document.querySelectorAll('button')
