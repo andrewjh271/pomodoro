@@ -4,7 +4,7 @@ const breakTime = document.querySelector('#set-break');
 const sessionTitle = document.querySelector('#session-title');
 const breakTitle = document.querySelector('#break-title');
 
-sessionTime.textContent = 25;
+sessionTime.textContent = 1;
 breakTime.textContent = 5;
 
 buttons = document.querySelectorAll('button')
@@ -79,7 +79,7 @@ function buttonClick(e) {
           } else {
             stopPauseTimer();
             targetTime = new Date(targetTime.getTime() + pauseTimer);
-            timer.textContent = calculate_countdown();
+            timer.textContent = calculateCountdown();
           }
           timerOn = setInterval(decreaseSecond, 1000)
           if(currentlyWorking) timerGradient = setInterval(updateGradient, 100);
@@ -165,7 +165,7 @@ function buttonClick(e) {
   }
 }
 function decreaseSecond() {
-  if (calculate_countdown() == "00:00") {
+  if(isTimeUp()) {
     if(currentlyWorking) {
       updateSessionCount();
       pausePlay.classList.remove('fa-pause');
@@ -176,19 +176,19 @@ function decreaseSecond() {
       pausePlay.classList.add('fa-pencil-alt');
       pausePlay.style = ('color: rgb(208, 123, 15)')
     }
-    startTime = new Date();
+    // startTime = new Date();
     extra.classList.remove('extra-hidden');
-    extra.textContent = `Extra Time: ${calculate_extra_time()}`;
+    extra.textContent = `Extra Time: ${calculateExtraTime()}`;
     clearInterval(timerOn);
     clearInterval(timerGradient);
     timerOn = setInterval(increaseSecond, 1000);
     extraTime = true;
     timer.textContent = '00:00';
   }
-  else timer.textContent = calculate_countdown();
+  else timer.textContent = calculateCountdown();
 }
 function increaseSecond() {
-  extra.textContent = `Extra Time: ${calculate_extra_time()}`;
+  extra.textContent = `Extra Time: ${calculateExtraTime()}`;
 }
 function prettifyDate(date) {
   return date.toISOString().substr(14, 5)
@@ -224,16 +224,22 @@ function updateGradient() {
     `linear-gradient(142deg, #02ddec ${-30 + colorVariable * 50}%,
     #ee05db ${colorVariable * 120}%, #02ddec 120%)`);
 }
-function calculate_countdown() {
+function calculateCountdown() {
   currentTime = new Date();
   let progress = currentTime.getTime() - startTime.getTime();
   let timerDate = new Date(0);
   timerDate.setSeconds(Math.round((targetTime.getTime() - progress) / 1000));
   return prettifyDate(timerDate)
 }
-function calculate_extra_time() {
+function isTimeUp() {
   currentTime = new Date();
-  let elapsed_time = currentTime.getTime() - startTime.getTime();
+  let progress = currentTime.getTime() - startTime.getTime();
+  if(targetTime.getTime() - progress <= 0) return true
+  else return false
+}
+function calculateExtraTime() {
+  currentTime = new Date();
+  let elapsed_time = currentTime.getTime() - startTime.getTime() - targetTime.getTime();
   elapsedDate = new Date(0);
   elapsedDate.setSeconds(Math.round(elapsed_time / 1000))
   return prettifyDate(elapsedDate);
