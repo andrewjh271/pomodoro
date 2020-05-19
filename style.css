@@ -71,7 +71,7 @@ html, body {
 #right-container {
   display: flex;
   flex-direction: column;
-  width: 17vh;
+  width: calc(var(--vh, 1vh) * 17);
 }
 .right-items {
   display: flex;
@@ -80,11 +80,11 @@ html, body {
   justify-content: space-around;
 }
 h3, .title {
-  font-size: 2.3vh;
+  font-size: calc(var(--vh, 1vh) * 2.3);
   font-weight: normal;
 }
 .title {
-  width: 12vh;
+  width: calc(var(--vh, 1vh) * 12);
 }
 .set {
   width: 3.6vh;
@@ -109,11 +109,19 @@ h3, .title {
   50% { color: rgb(90, 0, 207); }
   100% { color: rgb(204, 0, 119); }
 }
+@media (hover: hover) {
+  .arrow:hover {
+    color: orange !important;
+  }
+  #reset:hover {
+    color: rgb(219, 15, 15) 
+  }
+  #pause-play:hover {
+    color: rgb(0, 255, 255) !important;
+  }
+}
 .arrow {
   font-size: 1vh;
-}
-.arrow:hover {
-  color: orange !important;
 }
 .arrow:active {
   color: yellow !important;
@@ -153,14 +161,8 @@ button {
 button:focus {
   outline: none;
 }
-#pause-play:hover {
-  color: rgb(0, 255, 255) !important;
-}
 #pause-play:active {
   color: yellow !important;
-}
-#reset:hover {
-  color: rgb(219, 15, 15) 
 }
 #reset:active {
   color: yellow !important;
