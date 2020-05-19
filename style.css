@@ -5,20 +5,20 @@
   --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%);
 }
 html, body {
-  margin:0;padding:0;height:100vh;width:100vw;
+  margin:0;padding:0;height:calc(var(--vh, 1vh) * 100);width:100vw;
   font-family: 'Nanum Gothic', sans-serif;
   background: linear-gradient(127deg, rgba(125, 57, 189, 0.199) 0%, rgba(255, 230, 147, 0.205) 25%,
    rgba(125, 200, 228, 0.281) 75%, rgba(119, 177, 247, 0.568) 100%);
 }
 .container {
-  margin-top: 5vh;
+  margin-top: calc(var(--vh, 1vh) * 5);
   position: absolute;
   display: flex;
   flex-direction: column;
   /* border: 1px rgb(204, 204, 204) dotted; */
-  height: 85vh;
-  left: calc(50% - (48vh / 2));
-  width: 48vh;
+  height: calc(var(--vh, 1vh) * 85);
+  left: calc(50% - (calc(var(--vh, 1vh) * 48) / 2));
+  width: calc(var(--vh, 1vh) * 48);
 }
 #diamond-container {
   justify-content: center;
@@ -29,8 +29,8 @@ html, body {
   position: relative;
 }
 #top-diamond {
-  height: 36.3vh;
-  width: 42vh; /* height * 1.157 for skewX(30deg) */
+  height: calc(var(--vh, 1vh) * 36.3);
+  width: calc(var(--vh, 1vh) * 42); /* height * 1.157 for skewX(30deg) */
   position: relative;
 }
 #top-diamond:before {
@@ -45,8 +45,8 @@ html, body {
   transform: rotate(-60deg) skewX(-30deg);
 }
 #bottom-diamond {
-  height: 36.3vh;
-  width: 42vh;
+  height: calc(var(--vh, 1vh) * 36.3);
+  width: calc(var(--vh, 1vh) * 42);
   position: relative;
 }
 #bottom-diamond:before {
@@ -148,6 +148,7 @@ button {
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
+  padding: 1px 7px 2px;
 }
 button:focus {
   outline: none;
@@ -169,6 +170,8 @@ button:focus {
 }
 #controls {
   font-size: 2.4vh;
+  display: flex;
+  justify-content: space-between;
 }
 #controls > * {
   margin: 1.5vh;
