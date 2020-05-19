@@ -4,20 +4,17 @@ const breakTime = document.querySelector('#set-break');
 const sessionTitle = document.querySelector('#session-title');
 const breakTitle = document.querySelector('#break-title');
 
-sessionTime.textContent = 1;
-breakTime.textContent = 1;
+sessionTime.textContent = 25;
+breakTime.textContent = 5;
 
 buttons = document.querySelectorAll('button')
 buttons.forEach((button) => button.addEventListener('click', buttonClick));
 pausePlay = document.querySelector('i');
 
 let minutes;
-// let minutes = sessionTime.textContent;
-// let targetTime = new Date(0);
-// targetTime.setMinutes(minutes);
-// let timeString = prettifyDate(targetTime);
 
 let timerOn;
+let timerGradient;
 
 const timer = document.querySelector('#timer');
 timer.textContent = '25:00';
@@ -28,6 +25,9 @@ let newSession = true;
 let startTime;
 let targetTime;
 let currentTime;
+let pauseTimer;
+let pauseStart;
+let totalPause;
 
 const extra = document.querySelector('.extra');
 
@@ -72,20 +72,24 @@ function buttonClick(e) {
             targetTime = new Date(0);
             targetTime.setMinutes(minutes);
             startTime = new Date();
+            pauseTimer = 0;
+            totalPause = 0;
             resetGradient();
             newSession = false;
+          } else {
+            stopPauseTimer();
+            targetTime = new Date(targetTime.getTime() + pauseTimer);
+            timer.textContent = calculate_countdown();
           }
           timerOn = setInterval(decreaseSecond, 1000)
-          if(currentlyWorking)
-            timerGradient = setInterval(updateGradient, 100);
-
-
+          if(currentlyWorking) timerGradient = setInterval(updateGradient, 100);
           pausePlay.classList.remove('fa-play')
           pausePlay.classList.add('fa-pause')
           if(currentlyWorking) sessionTitle.classList.add('active-session');
           else breakTitle.classList.add('active-break');
           break;
         } else {
+          startPauseTimer();
           clearInterval(timerOn);
           timerOn = null;
           clearInterval(timerGradient)
@@ -96,6 +100,8 @@ function buttonClick(e) {
           break;
         }
       } else {
+        pauseTimer = 0;
+        totalPause = 0;
         pausePlay.classList.add('fa-pause')
         pausePlay.style = ('color: #1f91a4');
         clearInterval(timerOn);
@@ -129,6 +135,9 @@ function buttonClick(e) {
       }
       break;
     case('reset'):
+      pauseTimer = 0;
+      totalPause = 0;
+      clearInterval(timerGradient);
       resetGradient();
       newSession = true;
       clearInterval(timerOn);
@@ -156,7 +165,7 @@ function buttonClick(e) {
   }
 }
 function decreaseSecond() {
-  if (calculate_time_session() == "00:00") {
+  if (calculate_countdown() == "00:00") {
     if(currentlyWorking) {
       updateSessionCount();
       pausePlay.classList.remove('fa-pause');
@@ -176,7 +185,7 @@ function decreaseSecond() {
     extraTime = true;
     timer.textContent = '00:00';
   }
-  else timer.textContent = calculate_time_session();
+  else timer.textContent = calculate_countdown();
 }
 function increaseSecond() {
   extra.textContent = `Extra Time: ${calculate_extra_time()}`;
@@ -206,27 +215,18 @@ function resetGradient() {
 }
 function updateGradient() {
   currentTime = new Date();
-
-
-  let progress = currentTime.getTime() - startTime.getTime();
-  let progressPercent = progress / targetTime.getTime() * 100;
-
-  colorVariable = progressPercent;
+  let progress = currentTime.getTime() - startTime.getTime() - totalPause;
+  let colorVariable = progress / (targetTime.getTime() - totalPause) * 100;
   rootElement.style.setProperty('--linear-background-top',
     `linear-gradient(222deg, #02ddec -70%, #ee05db ${colorVariable}%, #02ddec 120%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
   `linear-gradient(142deg, #02ddec -30%, #ee05db ${colorVariable * 1.2}%, #02ddec 120%)`);  
 }
-function calculate_time_session() {
+function calculate_countdown() {
   currentTime = new Date();
-
-
   let progress = currentTime.getTime() - startTime.getTime();
-
   let timerDate = new Date(0);
   timerDate.setSeconds(Math.round((targetTime.getTime() - progress) / 1000));
-  console.log(timerDate)
-  console.log(timerDate.getMilliseconds());
   return prettifyDate(timerDate)
 }
 function calculate_extra_time() {
@@ -235,4 +235,13 @@ function calculate_extra_time() {
   elapsedDate = new Date(0);
   elapsedDate.setSeconds(Math.round(elapsed_time / 1000))
   return prettifyDate(elapsedDate);
+}
+function startPauseTimer() {
+  pauseStart = new Date();
+}
+function stopPauseTimer() {
+  currentTime = new Date();
+  let elapsed_time = currentTime.getTime() - pauseStart.getTime();
+  pauseTimer = elapsed_time;
+  totalPause += pauseTimer;
 }
