@@ -13,9 +13,15 @@ This project was created as part of The Odin Project curriculum, and was a Pair 
 - Session and Break titles will show text shadow and some subtle color animation when a session or break is active.
 - Both the session and break ranges are limited to 1-59 minutes.
 
+#### * Version 2 *
+
+- The Timer and Extra Time counter will now persist without losing time when the application is not in focus. - AH
+
 ### Process
 
-- The most challenging part was figuring out how to dynamically change the gradients of the two diamonds. There was an additional challenge in that the technique used to create the diamonds involved setting the gradient values in a :before pseudo-selector, which we could not access in Javascript. We settled on setting the gradient to a variable that was defined in the :root pseudo-class of CSS, and accessing it in Javascript this way:
+- *Update*, v2: Soon after the initial completion I realized the Timer and Extra Time counter were not being updated when the application was not in focus. Aaron and I actually talked about this possibility early on, but it seemed like it wasn't a problem with our implementation. We perhaps just didn't wait long enough. It seems `setInterval` stops updating regularly if the window is not in focus.  It was proving a huge undertaking to update everything without relying on `setInterval` to set the timers, and I decided I wouldn't take it on; however, the problem kept gnawing at me so I finally just spent a bunch of time working it out. Now the Timer, Extra Time, and gradient percent are set by calculations that involve subtracting the current time from a starting time. This method makes dealing with pauses more challenging — I have to keep track of both a single current pause as well as the total of all pauses for a session, and factor that into the calculations.
+
+- One of the most challenging parts was figuring out how to dynamically change the gradients of the two diamonds. There was an additional challenge in that the technique used to create the diamonds involved setting the gradient values in a :before pseudo-selector, which we could not access in Javascript. We settled on setting the gradient to a variable that was defined in the :root pseudo-class of CSS, and accessing it in Javascript this way:
 
 ```javascript
 rootElement.style.setProperty('--linear-background-top',
