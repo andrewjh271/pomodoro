@@ -1,8 +1,8 @@
 :root {
-  --linear-background-top: linear-gradient(222deg, #02ddec -70%, #ee05db 0%, #02ddec 120%);
-  /* top to bottom, #ee05db from 0 to 100 percent */
+  /* top to bottom, #ee05db from 0% to 98%, 02ddec from 80% to 120% */
+  --linear-background-top: linear-gradient(222deg, #02ddec -70%, #ee05db -10%, #02ddec 80%);
+  /* top to bottom, #02ddec from -30% to 20%, #ee05db from 0% to 120% */
   --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%);
-  /* top to bottom, #ee05db from 0 to 130 percent */
 }
 html, body {
   margin:0;padding:0;height:100%;width: 100%;

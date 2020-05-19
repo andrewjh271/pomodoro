@@ -4,7 +4,7 @@ const breakTime = document.querySelector('#set-break');
 const sessionTitle = document.querySelector('#session-title');
 const breakTitle = document.querySelector('#break-title');
 
-sessionTime.textContent = 25;
+sessionTime.textContent = 1;
 breakTime.textContent = 5;
 
 buttons = document.querySelectorAll('button')
@@ -209,18 +209,20 @@ function clearSessionCount() {
 }
 function resetGradient() {
   rootElement.style.setProperty('--linear-background-top',
-    `linear-gradient(222deg, #02ddec -70%, #ee05db 0%, #02ddec 120%)`);
+    `linear-gradient(222deg, #02ddec -70%, #ee05db -10%, #02ddec 80%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
     `linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%)`);
 }
 function updateGradient() {
   currentTime = new Date();
   let progress = currentTime.getTime() - startTime.getTime() - totalPause;
-  let colorVariable = progress / (targetTime.getTime() - totalPause) * 100;
+  let colorVariable = progress / (targetTime.getTime() - totalPause);
   rootElement.style.setProperty('--linear-background-top',
-    `linear-gradient(222deg, #02ddec -70%, #ee05db ${colorVariable}%, #02ddec 120%)`);
+    `linear-gradient(222deg, #02ddec -70%, #ee05db ${-10 + colorVariable * 116}%,
+    #02ddec ${80 + colorVariable * 40}%)`);
   rootElement.style.setProperty('--linear-background-bottom', 
-  `linear-gradient(142deg, #02ddec -30%, #ee05db ${colorVariable * 1.2}%, #02ddec 120%)`);  
+    `linear-gradient(142deg, #02ddec ${-30 + colorVariable * 50}%,
+    #ee05db ${colorVariable * 120}%, #02ddec 120%)`);
 }
 function calculate_countdown() {
   currentTime = new Date();
