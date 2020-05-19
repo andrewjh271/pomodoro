@@ -5,20 +5,20 @@
   --linear-background-bottom: linear-gradient(142deg, #02ddec -30%, #ee05db 0%, #02ddec 120%);
 }
 html, body {
-  margin:0;padding:0;height:100%;width: 100%;
+  margin:0;padding:0;height:calc(var(--vh, 1vh) * 100);width: 100%;
   font-family: 'Nanum Gothic', sans-serif;
   background: linear-gradient(127deg, rgba(125, 57, 189, 0.199) 0%, rgba(255, 230, 147, 0.205) 25%,
    rgba(125, 200, 228, 0.281) 75%, rgba(119, 177, 247, 0.568) 100%);
 }
 .container {
-  margin-top: 5vh;
+  margin-top: calc(var(--vh, 1vh) * 5);
   position: absolute;
   display: flex;
   flex-direction: column;
   /* border: 1px rgb(204, 204, 204) dotted; */
-  height: 85vh;
-  left: calc(50% - 48vh/2);
-  width: 48vh;
+  height: calc(var(--vh, 1vh) * 85);
+  left: calc(50% - calc(var(--vh, 1vh) * 48)/2);
+  width: calc(var(--vh, 1vh) * 48);
 }
 #diamond-container {
   justify-content: center;
@@ -29,8 +29,8 @@ html, body {
   position: relative;
 }
 #top-diamond {
-  height: 36.3vh;
-  width: 42vh; /* height * 1.157 for skewX(30deg) */
+  height: calc(var(--vh, 1vh) * 36.3);
+  width: calc(var(--vh, 1vh) * 42);; /* height * 1.157 for skewX(30deg) */
   position: relative;
 }
 #top-diamond:before {
@@ -45,8 +45,8 @@ html, body {
   transform: rotate(-60deg) skewX(-30deg);
 }
 #bottom-diamond {
-  height: 36.3vh;
-  width: 42vh;
+  height: calc(var(--vh, 1vh) * 36.3);;
+  width: calc(var(--vh, 1vh) * 42);;
   position: relative;
 }
 #bottom-diamond:before {
@@ -65,29 +65,29 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5vh;
+  font-size: calc(var(--vh, 1vh) * 1.5);
   z-index: 2;
 }
 #right-container {
   display: flex;
   flex-direction: column;
-  width: 17vh;
+  width: calc(var(--vh, 1vh) * 17);
 }
 .right-items {
   display: flex;
-  height: 4vh;
+  height: calc(var(--vh, 1vh) * 4);
   align-items: center;
   justify-content: space-around;
 }
 h3, .title {
-  font-size: 2.3vh;
+  font-size: calc(var(--vh, 1vh) * 2.3);
   font-weight: normal;
 }
 .title {
-  width: 12vh;
+  width: calc(var(--vh, 1vh) * 12);
 }
 .set {
-  width: 3.6vh;
+  width: calc(var(--vh, 1vh) * 3.6);
   text-align: right;
   padding: 0px;
 }
@@ -110,7 +110,7 @@ h3, .title {
   100% { color: rgb(204, 0, 119); }
 }
 .arrow {
-  font-size: 1vh;
+  font-size: calc(var(--vh, 1vh) * 1);
 }
 .arrow:hover {
   color: orange !important;
@@ -137,7 +137,7 @@ h3, .title {
   color: rgb(0, 99, 145);
 }
 #left-container {
-  width: 17vh;
+  width: calc(var(--vh, 1vh) * 17);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,14 +165,14 @@ button:focus {
   color: yellow !important;
 }
 #timer {
-  font-size: 4.5vh;
+  font-size: calc(var(--vh, 1vh) * 4.5);
 }
 #controls {
-  font-size: 2.4vh;
+  font-size: calc(var(--vh, 1vh) * 2.4);
 }
 #controls > * {
-  margin: 1.5vh;
-  margin-top: 1vh;
+  margin: calc(var(--vh, 1vh) * 1.5);
+  margin-top: calc(var(--vh, 1vh) * 1);
   color: #1f91a4;
 }
 .extra {
@@ -185,10 +185,10 @@ button:focus {
   position: fixed;
   bottom: 0;
   right: 0;
-  padding-right: 1vh;
-  padding-bottom: .5vh;
+  padding-right: calc(var(--vh, 1vh) * 1);
+  padding-bottom: calc(var(--vh, 1vh) * 0.5);
   color: white;
-  font-size: 1.5vh;
+  font-size: calc(var(--vh, 1vh) * 1.5);
 }
 a {
   text-decoration: none;
