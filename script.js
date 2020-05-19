@@ -4,7 +4,7 @@ const breakTime = document.querySelector('#set-break');
 const sessionTitle = document.querySelector('#session-title');
 const breakTitle = document.querySelector('#break-title');
 
-sessionTime.textContent = 1;
+sessionTime.textContent = 25;
 breakTime.textContent = 5;
 
 buttons = document.querySelectorAll('button')
@@ -176,7 +176,6 @@ function decreaseSecond() {
       pausePlay.classList.add('fa-pencil-alt');
       pausePlay.style = ('color: rgb(208, 123, 15)')
     }
-    // startTime = new Date();
     extra.classList.remove('extra-hidden');
     extra.textContent = `Extra Time: ${calculateExtraTime()}`;
     clearInterval(timerOn);
