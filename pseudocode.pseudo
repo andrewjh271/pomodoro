@@ -1,0 +1,37 @@
+
+
+States:
+  Timer off + new session
+    on play, reset calculate_time_session
+  Timer off + paused
+  Timer = countdown + on a session
+  Timer = countdown + on a break
+  Timer = counting up + on a session
+  Timer = counting up + on a break
+
+
+
+
+
+
+
+let newSession = true;
+let currentTime;
+let targetTime;
+let progress;
+
+
+
+
+function calculate_time_session (return_value) {
+  currentTime = new Date();
+
+  let progress = currentTime.getTime() - startTime.getTime();
+  let progressPercent = progress / targetTime.getTime();
+
+  timerDate = new Date(0);
+  timerDate.setMilliseconds(targetTime.getTime() - progress);
+
+  if(return_value = 'percent') return progressPercent;
+  else return timerDate;
+}
