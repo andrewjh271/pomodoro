@@ -156,6 +156,7 @@ button {
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
+  /* there are some unhelpful default padding settings for icons on devices */
   padding: 1px 7px 2px;
 }
 button:focus {

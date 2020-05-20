@@ -1,3 +1,4 @@
+/* deals with some issues involving vh on devices */
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
@@ -79,6 +80,7 @@ function buttonClick(e) {
             minutes = sessionTime.textContent;
             targetTime = new Date(0);
             targetTime.setMinutes(minutes);
+            timer.textContent = prettifyDate(targetTime);
             startTime = new Date();
             pauseTimer = 0;
             totalPause = 0;
